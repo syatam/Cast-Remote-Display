@@ -31,7 +31,7 @@
     </style>
 
     <style name="Theme.AppCompat.NoActionBar" parent="@style/Theme.AppCompat">
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowBackground">@color/window</item>
     </style>
