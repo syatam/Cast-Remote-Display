@@ -159,22 +159,41 @@ public class PresentationService extends CastRemoteDisplayLocalService {
                 };
                 int[] num_config = new int[1];
                 if (!egl.eglChooseConfig(display, configSpec, null, 0, num_config)) {
-                    return null;
+                    throw new IllegalArgumentException("eglChooseConfig1 failed");
                 }
 
                 int numConfigs = num_config[0];
 
                 if (numConfigs <= 0) {
-                    return null;
+                    // Don't do anti-aliasing
+                    configSpec = new int[]{
+                            EGL10.EGL_RED_SIZE, mRedSize,
+                            EGL10.EGL_GREEN_SIZE, mGreenSize,
+                            EGL10.EGL_BLUE_SIZE, mBlueSize,
+                            EGL10.EGL_ALPHA_SIZE, mAlphaSize,
+                            EGL10.EGL_DEPTH_SIZE, mDepthSize,
+                            EGL10.EGL_STENCIL_SIZE, mStencilSize,
+                            EGL10.EGL_RENDERABLE_TYPE, 4,
+                            EGL10.EGL_NONE
+                    };
+
+                    if (!egl.eglChooseConfig(display, configSpec, null, 0, num_config)) {
+                        throw new IllegalArgumentException("eglChooseConfig2 failed");
+                    }
+                    numConfigs = num_config[0];
+
+                    if (numConfigs <= 0) {
+                        throw new IllegalArgumentException("No configs match configSpec");
+                    }
                 }
 
                 EGLConfig[] configs = new EGLConfig[numConfigs];
                 if (!egl.eglChooseConfig(display, configSpec, configs, numConfigs, num_config)) {
-                    return null;
+                    throw new IllegalArgumentException("eglChooseConfig3 failed");
                 }
                 EGLConfig config = findConfig(egl, display, configs);
                 if (config == null) {
-                    return null;
+                    throw new IllegalArgumentException("No config chosen");
                 }
                 return config;
             }
