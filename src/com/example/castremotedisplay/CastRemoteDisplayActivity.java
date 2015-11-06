@@ -228,6 +228,12 @@ public class CastRemoteDisplayActivity extends ActionBarActivity {
                 castDevice, settings,
                 new CastRemoteDisplayLocalService.Callbacks() {
                     @Override
+                    public void onServiceCreated(
+                            CastRemoteDisplayLocalService service) {
+                        Log.d(TAG, "onServiceCreated");
+                    }
+
+                    @Override
                     public void onRemoteDisplaySessionStarted(
                             CastRemoteDisplayLocalService service) {
                         Log.d(TAG, "onServiceStarted");
