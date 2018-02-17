@@ -110,6 +110,17 @@ public class MainActivity extends ActionBarActivity {
                     }
                 }
 
+                //Temporary workaround until onRouteAdded call fixed
+                @Override
+                public void onRouteChanged(MediaRouter router, RouteInfo route) {
+                    if (++mRouteCount == 1) {
+                        // Show the button when a device is discovered.
+                        if (mMediaRouterButtonView != null) {
+                            mMediaRouterButtonView.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+
                 @Override
                 public void onRouteRemoved(MediaRouter router, RouteInfo route) {
                     if (--mRouteCount == 0) {

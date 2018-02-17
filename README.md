@@ -1,5 +1,4 @@
 # CastRemoteDisplay-android
-
 This Google Cast sample application shows how to use the Remote Display API.
 
 ## Dependencies

@@ -18,7 +18,7 @@
 
     <string name="app_name">CastRemoteDisplay</string>
     <string name="app_description">CAST REMOTE DISPLAY SAMPLE</string>
-    <string name="app_id">YOUR_APP_ID</string>
+    <string name="app_id">0286A389</string> <!-- DO NOT USE this receiver ID for your published app. Testing purpose only-->
     <string name="presentation_with_media_router_activity_text">This activity demonstrates how to use CastRemoteDisplay.</string>
     <string name="presentation_with_media_router_play_on">Play on...</string>
     <string name="presentation_with_media_router_now_playing_locally">Now playing on main display \'%s\'.</string>

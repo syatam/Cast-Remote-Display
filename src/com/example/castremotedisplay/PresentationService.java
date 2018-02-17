@@ -56,6 +56,7 @@ public class PresentationService extends CastRemoteDisplayLocalService {
 
     @Override
     public void onCreatePresentation(Display display) {
+        Log.i(TAG,"syatam: onCreatePresentation");
         createPresentation(display);
     }
 
